@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <title>Welcome to Hotel</title>
-<body>
+<body onload="randomtable()">
 
 <form action="/hotellogin" method="POST">
     <label for="hotelusername">USERNAME : </label>
@@ -26,10 +26,16 @@
     <label for="customerphone">PHONE NUMBER : </label>
     <input type="text" name="customerphone" id="customerphone" required>
     <label for="tablenumber">TABLE NUMBER : </label>
-    <input type="text" name="tablenumber" id="tablenumber" required>
+    <input type="number" name="tablenumber" id="tablenumber" readonly>
     <button type="submit" id="customersubmit">ORDER PLACE AS CUSTOMER</button>
 </form>
 </form>
 
+<script>
+    function randomtable() {
+        var x = document.getElementById("tablenumber")
+        x.value = Math.floor((Math.random() * 100) + 1);
+    }
+</script>
 </body>
 </html>
