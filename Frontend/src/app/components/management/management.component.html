@@ -1,0 +1,906 @@
+<mat-tab-group style="background-color: #4caf50; 
+height: 100%;
+    
+
+">
+  <mat-tab label="ORDER DETAILS">
+    <mat-card
+      style="
+        width: 85%;
+        height: 400px;
+        background-color: white;
+        color: black;
+        margin-top: 5%;
+        margin-left: 5%;
+        overflow-y: scroll;
+      "
+    >
+      <mat-list>
+        <table>
+          <tr>
+            <td>
+              <mat-list-item style="color: black; width: 100px"
+                ><b>SR NO.</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 150px"
+                ><b>BILL NO.</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 200px"
+                ><b>CUSTOMER NAME</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 150px"
+                ><b>PHONE</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 250px"
+                ><b>MAIL</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 150px"
+                ><b>TABLE NO.</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 150px"
+                ><b>CHEFNAME</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 150px"
+                ><b>ORDER</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 150px"
+                ><b>AMOUNT</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 100px"
+                ><b>STATUS</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 150px"
+                ><b>PARENT BILL</b></mat-list-item
+              >
+            </td>
+          </tr>
+        </table>
+        <table>
+          <div *ngFor="let element of orderlist.list; let i = index">
+            <tr>
+              <td>
+                <mat-list-item style="color: black; width: 100px">{{
+                  element.id
+                }}</mat-list-item>
+              </td>
+              <td>
+                <mat-list-item style="color: black; width: 150px">{{
+                  element.billnumber
+                }}</mat-list-item>
+              </td>
+              <td>
+                <mat-list-item style="color: black; width: 200px"
+                  >{{ element.customername }}
+                </mat-list-item>
+              </td>
+              <td>
+                <mat-list-item style="color: black; width: 150px"
+                  >{{ element.customerphone }}
+                </mat-list-item>
+              </td>
+              <td>
+                <mat-list-item style="color: black; width: 250px"
+                  >{{ element.customeremail }}
+                </mat-list-item>
+              </td>
+              <td>
+                <mat-list-item style="color: black; width: 150px"
+                  >{{ element.tablenumber }}
+                </mat-list-item>
+              </td>
+              <td>
+                <mat-list-item style="color: black; width: 150px"
+                  >{{ element.chefname }}
+                </mat-list-item>
+              </td>
+              <td>
+                <mat-list-item style="color: black; width: 150px"
+                  ><span
+                    class="material-icons"
+                    style="color: #4caf50; vertical-align: bottom"
+                    (click)="order(element.orderlist, element.total)"
+                    >fact_check</span
+                  >
+                </mat-list-item>
+              </td>
+              <td>
+                <mat-list-item style="color: black; width: 150px"
+                  >{{ element.total | currency: "INR" }}
+                </mat-list-item>
+              </td>
+              <td *ngIf="element.status == 'cooking'">
+                <mat-list-item style="color: black; width: 100px; color: orange"
+                  >{{ element.status }}
+                </mat-list-item>
+              </td>
+              <td *ngIf="element.status == 'served'">
+                <mat-list-item
+                  style="color: black; width: 100px; color: mediumpurple"
+                  >{{ element.status }}
+                </mat-list-item>
+              </td>
+              <td *ngIf="element.status == 'paid'">
+                <mat-list-item
+                  style="color: black; width: 100px; color: #4caf50"
+                  >{{ element.status }}
+                </mat-list-item>
+              </td>
+              <td>
+                <mat-list-item style="color: black; width: 150px">{{
+                  element.parent
+                }}</mat-list-item>
+              </td>
+            </tr>
+            <hr />
+          </div>
+        </table>
+      </mat-list>
+    </mat-card>
+  </mat-tab>
+
+
+
+  <mat-tab label="STOCK DETAILS">
+    <mat-card
+      style="
+        width: 85%;
+        height: 400px;
+        background-color: white;
+        color: black;
+        margin-top: 5%;
+        margin-left: 5%;
+        overflow-y: scroll;
+      "
+    >
+      <mat-list>
+        <table>
+          <tr>
+            <td>
+              <mat-list-item style="color: black; width: 100px"
+                ><b>ITEM NO</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 150px"
+                ><b>ITEM NAME</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 300px"
+                ><b>BRAND NAME</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 250px"
+                ><b>LAST STOCK UPDATED</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 150px"
+                ><b>QTY REMAIN</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 100px"
+                ><b>STATUS</b></mat-list-item
+              >
+            </td>
+            <td>
+              <mat-list-item style="color: black; width: 150px"
+                ><b>UPDATE STOCK</b></mat-list-item
+              >
+            </td>
+          </tr>
+        </table>
+        <table>
+          <div *ngFor="let element of stock.stocklist; let i = index">
+            <tr>
+              <td>
+                <mat-list-item style="color: black; width: 100px">{{
+                  element.itemid
+                }}</mat-list-item>
+              </td>
+              <td>
+                <mat-list-item style="color: black; width: 150px">{{
+                  element.itemname
+                }}</mat-list-item>
+              </td>
+              <td>
+                <mat-list-item style="color: black; width: 300px">{{
+                  element.brand
+                }}</mat-list-item>
+              </td>
+              <td>
+                <mat-list-item style="color: black; width: 250px"
+                  >{{ element.lastfilleddate }}
+                </mat-list-item>
+              </td>
+              <td>
+                <mat-list-item style="color: black; width: 150px"
+                  >{{ element.quantityremain }}
+                </mat-list-item>
+              </td>
+              <td *ngIf="element.quantityremain <= 10">
+                <mat-list-item style="color: black; width: 100px; color: red"
+                  >REFILL</mat-list-item
+                >
+              </td>
+              <td *ngIf="element.quantityremain > 10">
+                <mat-list-item
+                  style="color: black; width: 100px; color: #4caf50"
+                  >GOOD</mat-list-item
+                >
+              </td>
+              <td>
+                <mat-list-item style="color: black; width: 150px"
+                  ><span
+                    class="material-icons"
+                    style="
+                      color: #4caf50;
+                      vertical-align: bottom;
+                      margin-left: 50px;
+                    "
+                    (click)="updatestock(element.itemid)"
+                    >receipt_long</span
+                  >
+                </mat-list-item>
+              </td>
+            </tr>
+            <hr />
+          </div>
+        </table>
+      </mat-list>
+    </mat-card>
+  </mat-tab>
+
+
+
+
+  <mat-tab label="STAFF DETAILS">
+    <div
+      style="
+        width: 95%;
+        height: 100%;
+        background-color: #4caf50;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        margin-left: 50px;
+      "
+    >
+      <div
+        style="
+          width: 40%;
+          height: 100%;
+          background-color: #4caf50;
+          margin-top: 3%;
+          overflow-x: hidden;
+          overflow-y: scroll;
+        "
+      >
+        <h2 style="color: white; text-align: center">CHEF DETAILS</h2>
+        <div *ngFor="let element of cheflist.cheflist; let i = index">
+          <mat-card
+            class="example-card"
+            style="background-color: white; margin: 5px"
+          >
+            <mat-card-header>
+              <mat-card-title
+                *ngIf="element.available == 'true'"
+                style="color: black"
+              >
+                {{ element.chefname }}</mat-card-title
+              >
+              <mat-card-title
+                *ngIf="element.available == 'false'"
+                style="color: red"
+              >
+                {{ element.chefname }}</mat-card-title
+              >
+              <mat-card-subtitle style="color: green; margin-top: 20px"
+                >Title : {{ element.cheftitle }}
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions>
+              <table style="color: black; margin-left: 20px">
+                <tr>
+                  <td style="width: 200px">
+                    Username :
+                    {{ element.username }}
+                  </td>
+                  <td>
+                    Date of Joining :
+                    {{ element.dateofjoining }}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width: 200px">
+                    Phone :
+                    {{ element.phone }}
+                  </td>
+                  <td>
+                    Email :
+                    {{ element.email }}
+                  </td>
+                </tr>
+              </table>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+      <div
+        style="
+          width: 50%;
+          height: 100%;
+          background-color: #4caf50;
+          margin-left: 45%;
+          margin-top: -46%;
+          overflow-x: hidden;
+          overflow-y: scroll;
+        "
+      >
+        <h2 style="color: white; text-align: center">MANAGEMENT DETAILS</h2>
+        <div
+          *ngFor="let element of managementlist.managementlist; let i = index"
+        >
+          <mat-card
+            class="example-card"
+            style="background-color: white; margin: 5px"
+          >
+            <mat-card-header>
+              <mat-card-title
+                *ngIf="element.leave == 'present'"
+                style="color: black"
+              >
+                {{ element.authorityname }}</mat-card-title
+              >
+              <mat-card-title
+                *ngIf="element.leave == 'leave'"
+                style="color: red"
+              >
+                {{ element.authorityname }}</mat-card-title
+              >
+              <mat-card-subtitle style="color: green; margin-top: 20px"
+                >Title : {{ element.title }}
+              </mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-actions>
+              <table style="color: black; margin-left: 20px">
+                <tr>
+                  <td style="width: 300px">
+                    Username :
+                    {{ element.username }}
+                  </td>
+                  <td>
+                    Date of Joining :
+                    {{ element.dateofjoining }}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="width: 300px">
+                    Phone :
+                    {{ element.phone }}
+                  </td>
+                  <td>
+                    Email :
+                    {{ element.email }}
+                  </td>
+                </tr>
+              </table>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+
+
+
+  <mat-tab label="ADD ACCOUNT">
+    <div class="row"
+      style="
+        width: 95%;
+        height: 100%;
+        background-color: #4caf50;
+        margin-left: 50px;
+        overflow: hidden;
+      "
+    >
+      <div class="column"
+        style="
+          width: 30%;
+          height: 100%;
+          background-color: #4caf50;
+          margin-top: 3%;
+        "
+      >
+        <mat-card style="background-color: white">
+          <h2 style="color: #4caf50; text-align: center">ADD CHEF</h2>
+          <table style="color: black">
+            <tr>
+              <td>
+                <h3>NAME :</h3>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  [(ngModel)]="nameofchef"
+                  value="{{ nameofchef }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>USERNAME :</h3>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  [(ngModel)]="usernameofchef"
+                  value="{{ usernameofchef }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>TITLE :</h3>
+              </td>
+              <td>
+                <label for="titlechef"></label>
+                <select
+                  name="titlechef"
+                  id="titlechef"
+                  [(ngModel)]="titleofchef"
+                  value="{{ titleofchef }}"
+                  [ngModelOptions]="{ standalone: true }"
+                >
+                  <option value="Sous Chef">Sous Chef</option>
+                  <option value="Senior Chef">Senior Chef</option>
+                  <option value="Executive Chef">Executive Chef</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>PHONE :</h3>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  [(ngModel)]="phonrofchef"
+                  value="{{ phonrofchef }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>EMAIL :</h3>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  [(ngModel)]="emailofchef"
+                  value="{{ emailofchef }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>DATE JOINING :</h3>
+              </td>
+              <td>
+                <input
+                  type="date"
+                  [(ngModel)]="dateofjoiningofchef"
+                  value="{{ dateofjoiningofchef }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>ADDRESS :</h3>
+              </td>
+              <td>
+                <textarea
+                  type="text"
+                  [(ngModel)]="addressofchef"
+                  value="{{ addressofchef }}"
+                  [ngModelOptions]="{ standalone: true }"
+                ></textarea>
+              </td>
+            </tr>
+          </table>
+          <button
+            style="background-color: #4caf50; color: white; width: 100%"
+            mat-raised-button
+            (click)="addchef()"
+          >
+            ADD CHEF
+          </button>
+        </mat-card>
+      </div>
+
+      <div class="column"
+        style="
+          width: 30%;
+          height: 100%;
+          background-color: #4caf50;
+          margin-top: 3%;
+        "
+      >
+        <mat-card style="background-color: white">
+          <h2 style="color: #4caf50; text-align: center">ADD MANAGEMENT</h2>
+          <table style="color: black">
+            <tr>
+              <td>
+                <h3>NAME :</h3>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  [(ngModel)]="nameofmanagement"
+                  value="{{ nameofmanagement }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>USERNAME :</h3>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  [(ngModel)]="usernameofmanagement"
+                  value="{{ usernameofmanagement }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>TITLE :</h3>
+              </td>
+              <td>
+                <label for="titlemanagement"></label>
+                <select
+                  name="titlemanagement"
+                  id="titlemanagement"
+                  [(ngModel)]="titleofmanagement"
+                  value="{{ titleofmanagement }}"
+                  [ngModelOptions]="{ standalone: true }"
+                >
+                  <option value="Manager">Manager</option>
+                  <option value="Front Office Manager">
+                    Front Office Manager
+                  </option>
+                  <option value="General Manager">General Manager</option>
+                  <option value="Food and Beverage Manager">
+                    Food and Beverage Manager
+                  </option>
+                  <option value="Catering Manager">Catering Manager</option>
+                  <option value="Inventory Manager">Inventory Manager</option>
+                  <option value="Operations Manager">Operations Manager</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>PHONE :</h3>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  [(ngModel)]="phonrofmanagement"
+                  value="{{ phonrofmanagement }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>EMAIL :</h3>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  [(ngModel)]="emailofmanagement"
+                  value="{{ emailofmanagement }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>DATE JOINING :</h3>
+              </td>
+              <td>
+                <input
+                  type="date"
+                  [(ngModel)]="dateofjoiningofmanagement"
+                  value="{{ dateofjoiningofmanagement }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>ADDRESS :</h3>
+              </td>
+              <td>
+                <textarea
+                  type="text"
+                  [(ngModel)]="addressofmanagement"
+                  value="{{ addressofmanagement }}"
+                  [ngModelOptions]="{ standalone: true }"
+                ></textarea>
+              </td>
+            </tr>
+          </table>
+          <button
+            style="background-color: #4caf50; color: white; width: 100%"
+            mat-raised-button
+            (click)="addmanagement()"
+          >
+            ADD MANAGEMENT
+          </button>
+        </mat-card>
+      </div>
+
+      <div class="column"
+        style="
+          width: 30%;
+          height: 100%;
+          background-color: #4caf50;
+          margin-top:3%;
+        "
+      >
+        <mat-card style="background-color: white">
+          <h2 style="color: #4caf50; text-align: center">ADD STOCK</h2>
+          <table style="color: black">
+            <tr>
+              <td>
+                <h3>NAME :</h3>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  [(ngModel)]="namestock"
+                  value="{{ namestock }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>BRAND :</h3>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  [(ngModel)]="brandstock"
+                  value="{{ brandstock }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>PRICE :</h3>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  [(ngModel)]="pricestock"
+                  value="{{ pricestock }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>QUANTITY(KG) :</h3>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  [(ngModel)]="quantitystock"
+                  value="{{ quantitystock }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h3>REFILL DATE :</h3>
+              </td>
+              <td>
+                <input
+                  type="date"
+                  [(ngModel)]="refilldate"
+                  value="{{ refilldate }}"
+                  [ngModelOptions]="{ standalone: true }"
+                />
+              </td>
+            </tr>
+          </table>
+          <button
+            style="background-color: #4caf50; color: white; width: 100%"
+            mat-raised-button
+            (click)="addstock()"
+          >
+            ADD STOCK
+          </button>
+          
+          <div style="margin-left: 40% ;margin-top:2%">
+            <span
+              class="material-icons"
+              style="color: #4caf50; font-size: 90px; vertical-align: middle"
+              >inventory_2</span
+            >
+          </div>
+        </mat-card>
+      </div>
+
+    </div>
+  </mat-tab>
+  
+  <mat-tab label="EDIT PROFILE">
+    <mat-card
+      style="background-color: white; margin-top: 5%; margin-left: 25%"
+      fxFlex="50"
+    >
+      <table style="float: right; margin-right: 50px">
+        <tr>
+          <span
+            class="material-icons"
+            style="float: right; color: #4caf50"
+            (click)="logout()"
+            >logout</span
+          >
+          <span
+            class="material-icons"
+            style="float: right; color: #4caf50"
+            (click)="edit()"
+            >mode_edit</span
+          >
+        </tr>
+        <tr>
+          <h3 style="color: black; text-align: right">WELCOME</h3>
+        </tr>
+        <tr>
+          <h1 style="color: black; text-align: right">{{ name }}</h1>
+        </tr>
+        <tr>
+          <h2 style="color: black; text-align: right">{{ title }}</h2>
+        </tr>
+      </table>
+      <table style="color: black; margin-top: 150px; margin-left: 25px">
+        <tr>
+          <td style="width: 100px">
+            <p>USERNAME</p>
+          </td>
+          <td>
+            <p>:</p>
+          </td>
+          <td>
+            <p>
+              <b>{{ username }}</b>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td style="width: 100px">
+            <p>PHONE</p>
+          </td>
+          <td>
+            <p>:</p>
+          </td>
+          <td>
+            <p>
+              <b>{{ phone }}</b>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>DATE</p>
+          </td>
+          <td>
+            <p>:</p>
+          </td>
+          <td>
+            <p>
+              <b>{{ date }}</b>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>EMAIL</p>
+          </td>
+          <td>
+            <p>:</p>
+          </td>
+          <td>
+            <p>
+              <b
+                ><i>{{ email }}</i></b
+              >
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p>ADDRESS</p>
+          </td>
+          <td>
+            <p>:</p>
+          </td>
+          <td>
+            <p>
+              <b>{{ address }}</b>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </mat-card>
+  </mat-tab>
+
+
+
+
+
+
+
+  <!-- <label style="float: right; color: white; background-color: black">{{
+    nameofmanagement
+  }}</label>
+  <button
+    class="material-icons"
+    (click)="logout()"
+    style="
+      float: right;
+      color: black;
+      background-color: white;
+      border-style: none;
+    "
+  >
+    logout
+  </button> -->
+</mat-tab-group>
+<!-- <mat-card style="float: right; color: white">{{ nameofmanagement }} </mat-card>
+<mat-card>
+  <button
+    class="material-icons"
+    (click)="logout()"
+    style="float: right; color: black; border-style: none"
+  >
+    logout
+  </button>
+</mat-card> -->

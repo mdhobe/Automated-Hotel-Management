@@ -1,0 +1,59 @@
+<div
+    style="margin: -30px;background-color: #4CAF50;height: 400px;max-height: 400px;width: 500px;max-width: 500px;overflow-x: hidden;">
+    <div>
+        <mat-card class="example-card" style="background-color: white;margin: 10px; color: black;">
+            <span class="material-icons" style="float: right;color: #4CAF50;">highlight_off</span>
+            <table>
+                <tr>
+                    <td>
+                        <h3 style="margin-left: 10px;width: 150px;">NAME :</h3>
+                    </td>
+                    <td>
+                        <input type="text" style="width: 200px;" [(ngModel)]="name" value="{{name}}" [ngModelOptions]="{standalone: true}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3 style="margin-left: 10px;width: 150px;">BRAND :</h3>
+                    </td>
+                    <td>
+                        <input type="text" style="width: 200px;" [(ngModel)]="brand" value="{{brand}}" [ngModelOptions]="{standalone: true}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3 style="margin-left: 10px;width: 150px;">PRICE (RS) :</h3>
+                    </td>
+                    <td>
+                        <input type="number" style="width: 200px;" [(ngModel)]="price" value="{{price}}" [ngModelOptions]="{standalone: true}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3 style="margin-left: 10px;width: 150px;">WEIGHT :</h3>
+                    </td>
+                    <td>
+                        <input type="number" style="width: 200px;" [(ngModel)]="weight" value="{{weight}}" [ngModelOptions]="{standalone: true}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3 style="margin-left: 10px;width: 200px;">QUANTITY REMAIN (G) :</h3>
+                    </td>
+                    <td>
+                        <input type="number" style="width: 200px;" [(ngModel)]="quantityremain" value="{{quantityremain}}" [ngModelOptions]="{standalone: true}">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h3 style="margin-left: 10px;width: 200px;">DATE :</h3>
+                    </td>
+                    <td>
+                        <input type="text" style="width: 200px;" [(ngModel)]="date" value="{{date}}" [ngModelOptions]="{standalone: true}">
+                    </td>
+                </tr>
+            </table>
+        </mat-card>
+    </div>
+    <button style="float: right; background-color: white;color: #4CAF50;margin: 10px" mat-raised-button (click)="updatestock()">UPDATE STOCK</button>
+</div>

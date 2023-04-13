@@ -1,0 +1,87 @@
+<div style="width: 100%;
+height: 100%;
+background-color: rgb(76, 175, 80);
+overflow-y: hidden;
+
+"
+>
+    <div style="width: 45%;height: 100%;background-color: #4CAF50;overflow-x: hidden;overflow-y: scroll;">
+        <mat-card>
+            <h2 style="color: white;text-align: center">ITEM LIST</h2>
+        </mat-card>
+        <div *ngFor="let dishes of orderlist; let i = index">
+            <mat-card class="example-card" style="background-color: white;margin: 10px; color: black;">
+                <mat-slide-toggle [(ngModel)]="isChecked[i]" style="float: right;" (click)="statuscooked(i, dishes.billnumber)">
+                    <h3 *ngIf="!isChecked[i]" style="color: black;margin-top: 15px;width: 100px;">Cooking
+                    </h3>
+                    <h3 *ngIf="isChecked[i]" style="color: black;margin-top: 15px;width: 100px;">Cooked
+                    </h3>
+                </mat-slide-toggle>
+                <div style="margin-top: 50px;">
+                    <div *ngFor="let dish of dishes.items.orderlist.order; let j = index">
+                        <tr>
+                            <td style="width: 300px;">
+                                {{ dish.name }}
+                            </td>
+                            <td style="width: 100px;">
+                                {{ dish.quantity }}
+                            </td>
+                        </tr>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div style="width: 55%;height: 25%;background-color: #4CAF50;;margin-left: 45%;margin-top: -47%;">
+        <mat-card style="background-color: white;margin: 20px;height: 80%;">
+            <span class="material-icons" style="float: right;color: #4CAF50;" (click)="removeuser()">logout</span>
+            <span class="material-icons" style="float: right;color: #4CAF50;" (click)="edit()">mode_edit</span>
+            <h3 style="float: right;color: black;margin-top: 20px;">WELCOME</h3><br><br>
+            <h1 style="float: right;color: black;margin-right: -80px;margin-top: 20px;">{{CHEFNAME}}</h1>
+            <table style="color: black;">
+                <tr>
+                    <td style="width: 300px;">
+                        <p>USERNAME : <b>{{username}}</b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px;">
+                        <p>EMAIL : <b><i>{{email}}</i></b></p>
+                    </td>
+                    <td style="width: 200px;">
+                        <p>PHONE : <b>{{phone}}</b></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 300px;">
+                        <p>DATE : <b>{{dateofjoining}}</b></p>
+                    </td>
+                    <td style="width: 200px;">
+                        <p>TITLE : <b>{{cheftitle}}</b></p>
+                    </td>
+                </tr>
+            </table>
+        </mat-card>
+    </div>
+    <div style="width: 55%;height: 70%;margin-left: 45%;margin-top: 2%;background-color: #4CAF50;overflow-x: hidden;overflow-y: scroll;">
+        <mat-card>
+            <h2 style="color: white;text-align: center">ORDER HISTORY</h2>  
+        </mat-card>
+        <div *ngFor="let dishes of orderhistory; let i = index">
+            <mat-card class="example-card" style="background-color: white;margin-top: 10px; color: black;margin: 10px;">
+                <div>
+                    <table>
+                        <tr>
+                            <td style="width: 30%;">
+                                <h3>Bill no. : <b>{{dishes.billnumber}}</b></h3>
+                            </td>
+                            <td style="width: 20%;">
+                                <h3>Date : {{dishes.datestamp|date}}</h3>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

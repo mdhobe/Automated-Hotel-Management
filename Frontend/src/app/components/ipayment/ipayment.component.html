@@ -1,0 +1,133 @@
+<mat-accordion class="example-headers-align">
+  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" openToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Cash </mat-panel-title>
+      <mat-panel-description>
+        {{ data.total | currency: "INR" }}
+        <mat-icon>payments</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <button
+      style="background-color: #4caf50; color: white; margin: 10px; width: 90%"
+      mat-raised-button
+      (click)="pay()"
+    >
+      PAY BY CASH {{ data.total | currency: "INR" }}
+    </button>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    [expanded]="step === 1"
+    (opened)="setStep(1)"
+    closeToggle
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> Credit Card </mat-panel-title>
+      <mat-panel-description>
+        {{ data.total | currency: "INR" }}
+        <mat-icon>credit_card</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <table>
+      <tr>
+        <mat-form-field class="example-full-width">
+          <mat-label>Credit Card Number</mat-label>
+          <input matInput type="number" required />
+        </mat-form-field>
+      </tr>
+      <tr>
+        <mat-form-field class="example-full-width">
+          <mat-label>Credit Verification No.</mat-label>
+          <input matInput type="text" required />
+        </mat-form-field>
+      </tr>
+      <tr>
+        <mat-form-field class="example-full-width">
+          <mat-label>Credit Expiration Date</mat-label>
+          <input matInput type="date" required />
+        </mat-form-field>
+      </tr>
+    </table>
+    <button
+      style="background-color: #4caf50; color: white; margin: 10px; width: 90%"
+      mat-raised-button
+      (click)="pay()"
+    >
+      PAY BY CREDIT CARD {{ data.total | currency: "INR" }}
+    </button>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    [expanded]="step === 2"
+    (opened)="setStep(2)"
+    closeToggle
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> Debit Card </mat-panel-title>
+      <mat-panel-description>
+        {{ data.total | currency: "INR" }}
+        <mat-icon>credit_card</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <table>
+      <tr>
+        <mat-form-field class="example-full-width">
+          <mat-label>Debit Card Number</mat-label>
+          <input matInput type="number" required />
+        </mat-form-field>
+      </tr>
+      <tr>
+        <mat-form-field class="example-full-width">
+          <mat-label>Debit Expiration Date</mat-label>
+          <input matInput type="date" required />
+        </mat-form-field>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>Debit CVV Number</mat-label>
+            <input matInput type="number" required />
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width">
+            <mat-label>OTP</mat-label>
+            <input matInput type="number" required />
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <button
+      style="background-color: #4caf50; color: white; margin: 10px; width: 90%"
+      mat-raised-button
+      (click)="pay()"
+    >
+      PAY BY DEBIT CARD {{ data.total | currency: "INR" }}
+    </button>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel
+    [expanded]="step === 3"
+    (opened)="setStep(3)"
+    closeToggle
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title> UPI </mat-panel-title>
+      <mat-panel-description>
+        {{ data.total | currency: "INR" }}
+        <mat-icon>phonelink_lock</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-form-field class="example-full-width">
+      <mat-label>Enter UPI PIN</mat-label>
+      <input matInput type="text" required />
+    </mat-form-field>
+    <button
+      style="background-color: #4caf50; color: white; margin: 10px; width: 90%"
+      mat-raised-button
+      (click)="pay()"
+    >
+      PAY BY UPI {{ data.total | currency: "INR" }}
+    </button>
+  </mat-expansion-panel>
+</mat-accordion>

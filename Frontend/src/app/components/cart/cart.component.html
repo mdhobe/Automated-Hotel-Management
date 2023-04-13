@@ -1,0 +1,61 @@
+<div
+  style="
+    margin: -30px;
+    background-color: #4caf50;
+    height: 400px;
+    max-height: 400px;
+    width: 500px;
+    max-width: 500px;
+    overflow-x: hidden;
+  "
+>
+  <div *ngFor="let dishes of cartItem; let i = index">
+    <mat-card
+      class="example-card"
+      style="background-color: white; margin: 10px; color: black"
+    >
+      <table>
+        <tr>
+          <td>{{ dishes.name }}</td>
+          <td>( {{ dishes.category }} )</td>
+        </tr>
+        <tr>
+          <td>{{ dishes.price | currency: "INR" }} X</td>
+          <td>
+            <button
+              class="material-icons"
+              (click)="sub(i)"
+              style="color: #4caf50; padding: 0; border: none; background: none"
+            >
+              remove_circle
+            </button>
+          </td>
+          <td>
+            <label style="width: 50px; text-align: center">
+              {{ dishes.quantity }}
+            </label>
+          </td>
+          <td>
+            <button
+              class="material-icons"
+              (click)="add(i)"
+              style="color: #4caf50; padding: 0; border: none; background: none"
+            >
+              add_circle
+            </button>
+          </td>
+          <td>
+            <p>= {{ dishes.price * dishes.quantity | currency: "INR" }}</p>
+          </td>
+        </tr>
+      </table>
+    </mat-card>
+  </div>
+  <button
+    style="float: right; background-color: white; color: #4caf50; margin: 10px"
+    mat-raised-button
+    (click)="placeorder()"
+  >
+    Total = {{ total | currency: "INR" }} PLACE ORDER
+  </button>
+</div>

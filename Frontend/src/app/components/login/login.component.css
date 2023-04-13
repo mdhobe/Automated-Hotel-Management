@@ -1,0 +1,33 @@
+.main-div mat-card{
+    padding: 0px;
+    margin: auto;
+}
+.login-page{
+    padding: 20px;
+}
+.login-title{
+    background-color: #4CAF50;
+}
+.fake{
+    background-color: #4CAF50;
+    font-size: 1vw;
+    font-family: 'Times New Roman', Times, serif;
+    color: #ffffff;
+    padding: 10px;
+}
+.button{
+    background-color: #4CAF50;
+    display: inline-block;
+    width: 47%;
+    align-items: center;
+    margin: 4px;
+    color: white;
+}
+.horizontal{
+    display: inline-block;
+}
+img{
+    width: 30%;
+    height: 56%;
+    margin: 10%;
+}

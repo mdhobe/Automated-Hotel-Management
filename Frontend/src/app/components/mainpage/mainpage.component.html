@@ -1,0 +1,91 @@
+<div class="topnav">
+  <a class="active" (click)="logout()">Log Out</a>
+  <a (click)="managementlogin()">Management Login</a>
+  <a (click)="cheflogin()">Chef Login</a>
+</div>
+<div fxLayout Align="center center" fxFlexFill>
+  <mat-card
+    fxFlex="30"
+    style="height: 400px; margin-top: 100px; margin-left: 35%"
+  >
+    <p>{{ hotelname }}</p>
+    <form
+      fxLayoutAlign="stretch"
+      fxLayout="column"
+      class="login-page"
+      method="POST"
+      width="300"
+      height="200"
+      #OrderForm="ngForm"
+      (ngSubmit)="order(OrderForm.value)"
+    >
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          type="text"
+          ngModel
+          placeholder="Customer Name"
+          name="customername"
+          id="customername"
+          required
+          #usrname="ngModel"
+          [ngClass]="{ 'is-invalid': usrname.touched && usrname.invalid }"
+          class="form-control"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          type="text"
+          ngModel
+          placeholder="Customer Mobile Number"
+          name="mobilenumber"
+          id="mobilenumber"
+          required
+          #pno="ngModel"
+          minlength="10"
+          maxlength="10"
+          [ngClass]="{ 'is-invalid': pno.touched && pno.invalid }"
+          class="form-control"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          type="text"
+          ngModel
+          placeholder="Customer Email"
+          name="email"
+          id="email"
+          required
+          #eml="ngModel"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+          [ngClass]="{ 'is-invalid': eml.touched && eml.invalid }"
+          class="form-control"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <p>Table Number *</p>
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="tablenumber"
+          value="{{ tablenumber }}"
+          name="tablenumber"
+          id="tablenumber"
+          readonly
+        />
+      </mat-form-field>
+      <div class="horizontal">
+        <button
+          mat-raised-button
+          type="submit"
+          class="button1"
+          [disabled]="OrderForm.invalid"
+        >
+          Proceed to Order
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,85 @@
+<!-- <form
+  fxLayoutAlign="stretch"
+  fxLayout="column"
+  class="login-page"
+  method="POST"
+  width="400"
+  height="400"
+  #ManagementForm="ngForm"
+>
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      type="text"
+      placeholder="Management Login"
+      name="username"
+      id="username"
+      required
+      [(ngModel)]="username"
+      value="{{ username }}"
+      [ngModelOptions]="{ standalone: true }"
+      #usrname="ngModel"
+      [ngClass]="{ 'is-invalid': usrname.touched && usrname.invalid }"
+      class="form-control"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      type="password"
+      placeholder="Password"
+      name="password"
+      id="password"
+      required
+      [(ngModel)]="password"
+      value="{{ password }}"
+      [ngModelOptions]="{ standalone: true }"
+      #pwd="ngModel"
+      [ngClass]="{ 'is-invalid': pwd.touched && pwd.invalid }"
+      class="form-control"
+    />
+  </mat-form-field>
+
+  <div class="horizontal1">
+    <button
+      mat-raised-button
+      type="submit"
+      class="button"
+      style="background-color: #4caf50; width: 45%"
+      (click)="managementlogin()"
+      [disabled]="ManagementForm.invalid"
+    >
+      LOGIN
+    </button>
+    <button
+      mat-raised-button
+      type="reset"
+      class="button"
+      style="background-color: #4caf50; width: 45%; margin-left: 10%"
+    >
+      RESET
+    </button>
+  </div>
+</form> -->
+
+
+
+<form fxLayoutAlign="stretch" fxLayout="column" class="login-page" method="POST" width="400" height="400" >
+  <!-- modified  -->
+  <mat-icon aria-hidden="false" aria-label="Example home icon">people</mat-icon>
+  
+   
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" placeholder="Management Login" name="username" id="username" required [(ngModel)]="username" value="{{username}}" [ngModelOptions]="{standalone: true}"/>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput type="password" placeholder="Password" name="password" id="password" required [(ngModel)]="password" value="{{password}}" [ngModelOptions]="{standalone: true}"/>
+  </mat-form-field>
+
+  <div class="horizontal1">
+    <button mat-raised-button type="submit" class="button" style="background-color: #4CAF50; width: 45%;" (click)="managementlogin()">LOGIN</button>
+    <button mat-raised-button type="reset" class="button" style="background-color: #4CAF50; width: 45%;margin-left: 10%;">RESET</button>
+  </div>
+</form>

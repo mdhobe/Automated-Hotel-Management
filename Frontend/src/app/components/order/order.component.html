@@ -1,0 +1,18 @@
+<div style="width: 450px;height: 350px;background-color: #4CAF50;;">
+    <table>
+        <tr>
+            <td style="width: 300px;">ITEM NAME</td>
+            <td style="width: 200px;text-align: center;">PER PLATE</td>
+            <td style="width: 200px;text-align: center;">QUANTITY</td>
+            <td style="width: 200px;text-align: center;">PRICE</td> 
+        </tr>
+        <tr *ngFor="let dishes of foodlist.order; let i = index">
+            <td style="width: 200px;">{{ dishes.name}}</td>
+            <td style="width: 200px;text-align: center;">{{ dishes.price | currency: "INR"}}</td>
+            <td style="width: 200px;text-align: center;">{{ dishes.quantity}}</td>
+            <td style="width: 200px;text-align: center;">{{ dishes.total | currency: "INR" }}</td>   
+        </tr>
+    </table>
+    <hr>
+    <p style="float: right;margin-right: 20px;">TOTAL : {{data.price | currency: "INR"}}</p>
+</div>

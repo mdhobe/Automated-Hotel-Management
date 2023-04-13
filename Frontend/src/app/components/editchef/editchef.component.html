@@ -1,0 +1,104 @@
+<div
+  style="
+    margin: -30px;
+    background-color: #4caf50;
+    height: 400px;
+    max-height: 400px;
+    width: 500px;
+    max-width: 500px;
+    overflow-x: hidden;
+  "
+>
+  <div>
+    <mat-card
+      class="example-card"
+      style="background-color: white; margin: 10px; color: black"
+    >
+      <span
+        class="material-icons"
+        style="float: right; color: #4caf50"
+        (click)="close()"
+        >highlight_off</span
+      >
+      <table>
+        <tr>
+          <td>
+            <h3 style="margin-left: 10px; width: 150px">EMAIL :</h3>
+          </td>
+          <td>
+            <input
+              type="text"
+              style="width: 200px"
+              [(ngModel)]="email"
+              value="{{ email }}"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3 style="margin-left: 10px; width: 150px">PHONE :</h3>
+          </td>
+          <td>
+            <input
+              type="number"
+              style="width: 200px"
+              [(ngModel)]="phone"
+              value="{{ phone }}"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3 style="margin-left: 10px; width: 150px">PASSWORD :</h3>
+          </td>
+          <td>
+            <input
+              type="password"
+              style="width: 200px"
+              [(ngModel)]="password"
+              value="{{ password }}"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3 style="margin-left: 10px; width: 150px">CONFIRM PASSWORD :</h3>
+          </td>
+          <td>
+            <input
+              type="password"
+              style="width: 200px"
+              [(ngModel)]="confirmpassword"
+              value="{{ confirmpassword }}"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td style="margin-left: 20px; width: 150px">
+            <h3>ADDRESS :</h3>
+          </td>
+          <td>
+            <textarea
+              type="text"
+              style="width: 200px"
+              [(ngModel)]="address"
+              value="{{ address }}"
+              [ngModelOptions]="{ standalone: true }"
+            ></textarea>
+          </td>
+        </tr>
+      </table>
+    </mat-card>
+  </div>
+  <button
+    style="float: right; background-color: white; color: #4caf50; margin: 10px"
+    mat-raised-button
+    (click)="update()"
+  >
+    UPDATE DETAILS
+  </button>
+</div>

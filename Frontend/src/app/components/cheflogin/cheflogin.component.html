@@ -1,0 +1,88 @@
+<!-- <form
+  fxLayoutAlign="stretch"
+  fxLayout="column"
+  class="login-page"
+  method="POST"
+  width="400"
+  height="400"
+  #ChefloginForm="ngForm"
+  (ngSubmit)="cheflogin(ChefloginForm.value)"
+>
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      ngModel
+      type="text"
+      placeholder="Chef Login"
+      name="chefusername"
+      id="chefusername"
+      required
+      #usrname="ngModel"
+      [ngClass]="{ 'is-invalid': usrname.touched && usrname.invalid }"
+      class="form-control"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      ngModel
+      type="password"
+      placeholder="Password"
+      name="chefpassword"
+      id="chefpassword"
+      required
+      #pwd="ngModel"
+      [ngClass]="{ 'is-invalid': pwd.touched && pwd.invalid }"
+      class="form-control"
+    />
+  </mat-form-field>
+
+  <div class="horizontal1">
+    <button
+      mat-raised-button
+      type="submit"
+      class="button"
+      style="background-color: #4caf50; width: 45%"
+      [disabled]="ChefloginForm.invalid"
+    >
+      LOGIN
+    </button>
+    <button
+      mat-raised-button
+      type="reset"
+      class="button"
+      style="background-color: #4caf50; width: 45%; margin-left: 10%"
+    >
+      RESET
+    </button>
+  </div>
+</form> -->
+
+
+
+
+  
+<form fxLayoutAlign="stretch" fxLayout="column" class="login-page" method="POST" width="400" height="500" 
+    #ChefloginForm="ngForm" (ngSubmit)="cheflogin(ChefloginForm.value)">
+    
+    <!-- modified -->
+        <mat-icon aria-hidden="false" aria-label="Example home icon">person_pin</mat-icon>
+        
+    
+        
+    
+    <mat-form-field class="example-full-width">
+        <input matInput ngModel type="text" placeholder="Chef Login" name="chefusername" id="chefusername" required />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <input matInput ngModel type="password" placeholder="Password" name="chefpassword" id="chefpassword" required />
+    </mat-form-field>
+
+    <div class="horizontal1">
+        <button mat-raised-button type="submit" class="button" style="background-color: #4CAF50; width: 45%;">LOGIN</button>
+        <button mat-raised-button type="reset" class="button" style="background-color: #4CAF50; width: 45%;margin-left: 10%;">RESET</button>
+    </div>
+</form>
+

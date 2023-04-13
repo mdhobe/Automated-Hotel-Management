@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Lato'; background-color: #4CAF50;}
+* ::-webkit-scrollbar {
+    width: 10px;
+    opacity: 0.2;
+  }
+
+  body::after {
+    content: "";
+    background: url(https://cdn5.vectorstock.com/i/1000x1000/30/94/doodle-food-icons-seamless-background-vector-5273094.jpg);
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    
+    z-index: -1;
+       
+  }
+  /* Track */
+  * ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey; 
+    border-radius: 10px;
+    opacity: 0.2;
+  }
+  /* Handle */
+  * ::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
+    opacity: 0.2;
+  }
+  /* Handle on hover */
+  * ::-webkit-scrollbar-thumb:hover {
+    background: white;
+    opacity: 0.4;
+  }
+  button:disabled{
+    cursor: not-allowed;
+    pointer-events: all !important;
+  }

@@ -1,0 +1,20 @@
+span.error{
+    color: red;
+    font-size: smaller;
+}
+
+
+.mat-icon {
+   
+    background-repeat: no-repeat;
+    font-size: 180px;
+    padding-top: 7%;
+    fill: currentColor;
+    height: 200px;
+    width: 200px;
+    align-self: center;
+    
+ }
+ 
+ 
+ 

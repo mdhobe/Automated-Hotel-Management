@@ -1,0 +1,280 @@
+<div
+  style="
+    width: 100%;
+    height: 100%;
+    background-color: #4caf50;
+    overflow-y: hidden;
+  "
+>
+  <div
+    style="
+      width: 60%;
+      height: 100%;
+      background-color: #4caf50;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    "
+  >
+    <div style="margin-top: 20px">
+      <label style="font-size: 30px; text-align: center; padding-left: 20px"
+        >List of Items</label
+      >
+      <button
+        style="
+          float: right;
+          background-color: white;
+          color: #4caf50;
+          margin: 10px;
+        "
+        mat-raised-button
+        (click)="addToCart()"
+      >
+        <span class="material-icons" style="color: #4caf50"
+          >add_shopping_cart</span
+        >ADD TO CART
+      </button>
+    </div>
+    <div style="margin-top: 50px">
+      <div *ngFor="let dishes of fooditem; let i = index">
+        <mat-card
+          class="example-card"
+          style="background-color: white; margin: 10px"
+        >
+          <mat-card-header>
+            <mat-card-title style="color: black">{{
+              dishes.name
+            }}</mat-card-title>
+            <mat-card-subtitle style="color: black">{{
+              dishes.category
+            }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p style="color: black">{{ dishes.description }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <table style="color: black">
+              <tr>
+                <td>{{ dishes.price | currency: "INR" }}</td>
+                <td>
+                  <button
+                    class="material-icons"
+                    (click)="sub(i)"
+                    style="
+                      color: #4caf50;
+                      padding: 0;
+                      border: none;
+                      background: none;
+                    "
+                  >
+                    remove_circle
+                  </button>
+                </td>
+                <td>
+                  <label style="width: 50px; text-align: center">
+                    {{ dishes.quantity }}
+                  </label>
+                </td>
+                <td>
+                  <button
+                    class="material-icons"
+                    (click)="add(i)"
+                    style="
+                      color: #4caf50;
+                      padding: 0;
+                      border: none;
+                      background: none;
+                    "
+                  >
+                    add_circle
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+    <button
+      style="
+        float: right;
+        background-color: white;
+        color: #4caf50;
+        margin: 10px;
+      "
+      mat-raised-button
+      (click)="addToCart()"
+    >
+      <span class="material-icons" style="color: #4caf50"
+        >add_shopping_cart</span
+      >ADD TO CART
+    </button>
+  </div>
+  <div
+    style="
+      width: 40%;
+      height: 25%;
+      background-color: #4caf50;
+      margin-left: 60%;
+      margin-top: -47%;
+    "
+  >
+    <mat-card
+      class="example-card"
+      style="background-color: white; margin: 10px; color: black"
+    >
+      <button
+        class="material-icons"
+        (click)="removeuser()"
+        style="float: right; color: #4caf50; border-style: none"
+        [disabled]="controlLogout"
+      >
+        logout
+      </button>
+      <span
+        class="material-icons"
+        style="float: right; color: #4caf50; cursor: default"
+        (click)="editProfile()"
+        >mode_edit</span
+      >
+      <p>
+        <span
+          class="material-icons"
+          style="color: #4caf50; vertical-align: bottom"
+          >account_circle</span
+        >Name : {{ NAME }}
+      </p>
+      <p>
+        <span
+          class="material-icons"
+          style="color: #4caf50; vertical-align: bottom"
+          >stay_current_portrait</span
+        >Mobile : {{ MOBILE }}
+      </p>
+      <p>
+        <span
+          class="material-icons"
+          style="color: #4caf50; vertical-align: bottom"
+          >mail</span
+        >Email : {{ EMAIL }}
+      </p>
+      <p>
+        <span
+          class="material-icons"
+          style="color: #4caf50; vertical-align: bottom"
+          >chair</span
+        >Table : {{ TABLE }}
+      </p>
+      <button
+        *ngIf="!this.isorderplaced"
+        style="
+          float: right;
+          background-color: #4caf50;
+          color: white;
+          width: 200px;
+          margin-top: -30px;
+          margin-right: -5px;
+        "
+        mat-raised-button
+        (click)="pay()"
+      >
+        <span class="material-icons" style="color: white">payments</span> PAY
+        ALL ORDER
+      </button>
+    </mat-card>
+  </div>
+  <div
+    style="
+      width: 40%;
+      height: 70%;
+      margin-left: 60%;
+      margin-top: 2%;
+      overflow-y: scroll;
+    "
+  >
+    <div style="margin-top: 30%; margin-left: 40%" *ngIf="this.isorderplaced">
+      <span
+        class="material-icons"
+        style="color: white; font-size: 100px; vertical-align: middle"
+        >fastfood</span
+      >
+      <h2 style="text-align: left; margin-left: -30px; color: white">
+        NO ORDER PLACED
+      </h2>
+    </div>
+    <div>
+      <div *ngFor="let orders of orderlist; let i = index">
+        <mat-card
+          class="example-card"
+          style="background-color: white; margin: 10px"
+        >
+          <mat-card-header>
+            <mat-card-title style="color: black"
+              >BILL NO : {{ orders.billnumber }}</mat-card-title
+            >
+            <h3
+              *ngIf="orders.status == 'cooking'"
+              style="color: red; margin-left: 50px"
+            >
+              {{ orders.status.toUpperCase() }}
+            </h3>
+            <h3
+              *ngIf="orders.status == 'served'"
+              style="color: green; margin-left: 50px"
+            >
+              {{ orders.status.toUpperCase() }}
+            </h3>
+          </mat-card-header>
+          <mat-card-actions>
+            <table style="color: black; margin-left: 50px">
+              <tr>
+                <td>
+                  <span class="material-icons" style="color: #4caf50"
+                    >restaurant_menu</span
+                  >
+                  <p style="color: black">ORDER DETAILS</p>
+                </td>
+              </tr>
+              <tr *ngFor="let item of orders.order; let j = index">
+                <td>{{ item.name }}</td>
+                <td>
+                  {{ item.price | currency: "INR" }} X {{ item.quantity }} =
+                  {{ item.price * item.quantity | currency: "INR" }}
+                </td>
+              </tr>
+            </table>
+          </mat-card-actions>
+          <button
+            style="
+              float: right;
+              background-color: #4caf50;
+              color: white;
+              width: 200px;
+              margin-top: -25px;
+              margin-right: -5px;
+            "
+            mat-stroked-button
+            (click)="payinvidual(orders)"
+          >
+            <span class="material-icons" style="color: white">payments</span>
+            PAY THIS BILL
+          </button>
+        </mat-card>
+      </div>
+      <button
+        *ngIf="!this.isorderplaced"
+        style="
+          float: right;
+          background-color: white;
+          color: #4caf50;
+          width: 200px;
+          margin-right: 10px;
+        "
+        mat-raised-button
+        (click)="pay()"
+      >
+        <span class="material-icons" style="color: #4caf50">payments</span> PAY
+        ALL ORDER
+      </button>
+    </div>
+  </div>
+</div>
